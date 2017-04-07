@@ -61,11 +61,11 @@ class Conversation < ActiveRecord::Base
  def format_last_message_date
    date = self.updated_at
    if date < DateTime.now.days_ago(7)
-     return date.strftime("%m/%d/%Y")
+     return date.in_time_zone('Eastern Time (US & Canada)').strftime("%m/%d/%Y")
    elsif date < DateTime.now.beginning_of_day()
-     return date.strftime("%A")
+     return date.in_time_zone('Eastern Time (US & Canada)').strftime("%A")
    else
-     return date.strftime("%l:%M %P")
+     return date.in_time_zone('Eastern Time (US & Canada)').strftime("%l:%M %P")
    end
  end
 

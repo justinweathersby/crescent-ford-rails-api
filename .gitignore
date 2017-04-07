@@ -25,3 +25,5 @@
 
 # Local dev variables
 /config/local_env.yml
+
+/.env
