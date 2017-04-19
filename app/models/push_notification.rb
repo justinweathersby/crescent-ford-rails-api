@@ -13,17 +13,21 @@ private
   def upload_notification_to_ionic
     puts self.tokens.to_json
 
-
     params = {
       "tokens" => self.tokens,
       "profile" => ENV['IONIC_PUSH_ENV'],
       "notification":{
+        "payload": {
+          "user_message": "0"
+        },
         "message": self.message,
         "android":{
-          "title": "Crescent Ford"
+          "title": "Crescent Ford",
+          "sound": "true"
         },
          "ios": {
-              "title": "Crescent Ford"
+              "title": "Crescent Ford",
+              "sound": "true"
             }
       }
     }

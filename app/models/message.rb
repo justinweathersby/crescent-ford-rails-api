@@ -41,11 +41,13 @@ class Message < ActiveRecord::Base
            },
            "android":{
              "title": "One Touch Dealer",
-             "badge": "1"
+             "badge": "1",
+             "sound": "true"
            },
             "ios": {
                  "title": "One Touch Dealer",
-                 "badge": "1"
+                 "badge": "1",
+                 "sound": "true"
                }
          }
        }
