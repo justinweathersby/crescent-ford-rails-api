@@ -1,7 +1,8 @@
 json.conversations @conversations do |convo|
       json.conversation_id convo.id
-      json.sender_name convo.matched_name(current_user)
+      json.created_at convo.created_at
       json.sender_id convo.matched_id(current_user)
+      json.sender_name convo.matched_name(current_user)
       json.sender_image convo.matched_image(current_user)
       json.sender_dealership convo.matched_dealership(current_user).name if convo.matched_dealership(current_user).present?
       json.sender_role User.find(convo.matched_id(current_user)).has_role?(:sales_rep, convo.matched_dealership(current_user)) ?  "Sales Rep" : "Service Rep"
