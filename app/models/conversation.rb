@@ -69,4 +69,9 @@ class Conversation < ActiveRecord::Base
    end
  end
 
+ # -- For socket.io rooms
+ def unique_id
+   ENV['IONIC_APP_ID'] + '.' + self.id.to_s
+ end
+
 end

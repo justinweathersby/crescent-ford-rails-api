@@ -1,6 +1,7 @@
 json.conversations @conversations do |convo|
       json.conversation_id convo.id
       json.created_at convo.created_at
+      json.unique_id convo.unique_id
       json.sender_id convo.matched_id(current_user)
       json.sender_name convo.matched_name(current_user)
       json.sender_image convo.matched_image(current_user)
