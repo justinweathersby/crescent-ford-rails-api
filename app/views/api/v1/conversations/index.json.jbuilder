@@ -13,4 +13,5 @@ json.conversations @conversations do |convo|
         json.sender_name User.find(convo.messages.last.user_id).name
         json.created_at convo.format_last_message_date
       end
+      json.messages convo.messages
 end
