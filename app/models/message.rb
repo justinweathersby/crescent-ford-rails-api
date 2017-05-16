@@ -30,6 +30,8 @@ class Message < ActiveRecord::Base
      message_text = username + ": " + self.body
 
      unless token.nil?
+       badge_count = Message.where(conversation.recipient_id: self.conversation.recipient_id, read: false).count;
+
        params = {
          "tokens" => token,
          "profile" => ENV['IONIC_PUSH_ENV'],
@@ -46,8 +48,8 @@ class Message < ActiveRecord::Base
            },
             "ios": {
                  "title": "One Touch Dealer",
-                 "badge": "1",
-                 "sound": "true"
+                 "sound": "true",
+                 "badge": badge_count
                }
          }
        }
