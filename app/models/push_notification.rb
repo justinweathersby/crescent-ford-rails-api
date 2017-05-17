@@ -13,7 +13,7 @@ private
   def upload_notification_to_ionic
     puts self.tokens.to_json
 
-   badge_count = Conversation.where('(recipient_id= ? AND recipient_read= false) OR (sender_id= ? AND sender_read= false)', self.sent_to, self.sent_to).count;
+   badge_count = Conversation.where('(recipient_id= ? AND recipient_read= ?) OR (sender_id= ? AND sender_read= ?)', self.sent_to, false, self.sent_to, false).count;
 
     params = {
       "tokens" => self.tokens,

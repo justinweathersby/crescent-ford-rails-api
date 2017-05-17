@@ -30,7 +30,7 @@ class Message < ActiveRecord::Base
      message_text = username + ": " + self.body
 
      unless token.nil?
-      badge_count = Conversation.where('(recipient_id= ? AND recipient_read= false) OR (sender_id= ? AND sender_read= false)', user_id, user_id).count;
+      badge_count = Conversation.where('(recipient_id= ? AND recipient_read= ?) OR (sender_id= ? AND sender_read= ?)', user_id, false, user_id, false).count;
 
        params = {
          "tokens" => token,
