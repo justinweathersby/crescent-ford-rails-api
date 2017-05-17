@@ -14,7 +14,7 @@ private
     puts self.tokens.to_json
 
     user_id = self.sent_to
-    badge_count = Conversation.where('(recipient_id= ? AND recipient_read= ?) OR (sender_id= ? AND recipient_read= ?)', user_id, false, user_id, false).count;
+      badge_count = Conversation.where('(recipient_id= ? AND recipient_read= ?) OR (sender_id= ? AND sender_read= ?)', user_id, false, user_id, false).count;
 
     params = {
       "tokens" => self.tokens,
