@@ -13,6 +13,9 @@ private
   def upload_notification_to_ionic
     puts self.tokens.to_json
 
+    user_id = self.sent_to
+      badge_count = Conversation.where('(recipient_id= ? AND recipient_read= ?) OR (sender_id= ? AND sender_read= ?)', user_id, false, user_id, false).count;
+
     params = {
       "tokens" => self.tokens,
       "profile" => ENV['IONIC_PUSH_ENV'],
@@ -27,7 +30,8 @@ private
         },
          "ios": {
               "title": "Crescent Ford",
-              "sound": "true"
+              "sound": "true",
+              "badge": badge_count
             }
       }
     }
