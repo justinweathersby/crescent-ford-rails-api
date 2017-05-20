@@ -18,6 +18,7 @@ class Api::V1::MessagesController < Api::ApiController
        @conversation.sender_read = false;
       end
       @conversation.save
+      @message.upload_notification_to_ionic
       render :new, status: :ok, formats: [:json]
     else
       render json: @message.errors, status: :bad_request
