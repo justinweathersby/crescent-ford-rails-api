@@ -9,8 +9,4 @@ class Dealership < ApplicationRecord
   has_attached_file :background_image, styles: { medium: "600x600>"}, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
 
-  # -- For socket.io rooms
- def unique_id
-   ENV['IONIC_APP_ID'] + '.' + self.id.to_s
- end
 end
