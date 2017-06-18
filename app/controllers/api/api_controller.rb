@@ -16,7 +16,8 @@ class Api::ApiController < ActionController::Base
 	def current_user
     token = request.headers['Authorization'].presence
     if token
-		    @current_user ||= User.find_by_auth_token(token)
+		    @current_user = User.find_by_auth_token(token)
+        puts "current user value is: " + @current_user.to_s
     end
 	end
 
