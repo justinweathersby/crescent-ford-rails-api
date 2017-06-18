@@ -1,12 +1,9 @@
 class Api::V1::ConversationsController < Api::ApiController
- load_and_authorize_resource
+ # load_and_authorize_resource
  before_action :authenticate_with_token!
 
 def index
-  puts "Inside conversations controller index"
-  # if current_user.present?
-    @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id).order(updated_at: :desc)
-  # end
+ @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id).order(updated_at: :desc)
 end
 
 def create
