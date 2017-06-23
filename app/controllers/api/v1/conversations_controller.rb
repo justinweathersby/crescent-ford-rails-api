@@ -4,6 +4,7 @@ class Api::V1::ConversationsController < Api::ApiController
 
 def index
  @conversations = Conversation.where("sender_id = ? OR recipient_id = ?", current_user.id, current_user.id).order(updated_at: :desc)
+ @unread_count =  Conversation.where('(recipient_id= ? AND recipient_read= ?) OR (sender_id= ? AND sender_read= ?)', current_user.id, false, current_user.id, false).count
 end
 
 def create
