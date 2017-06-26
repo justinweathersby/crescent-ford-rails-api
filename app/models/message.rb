@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'net/http'
+
 class Message < ActiveRecord::Base
  belongs_to :conversation
  belongs_to :user

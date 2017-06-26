@@ -1,3 +1,6 @@
+require 'open-uri'
+require 'net/http'
+
 class PushNotification < ApplicationRecord
   belongs_to :user
   after_create :upload_notification_to_ionic
